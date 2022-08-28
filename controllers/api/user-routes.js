@@ -90,7 +90,7 @@ router.put('/:id', (req, res) =>{
 });
 
 //DELETE api/users/idnumber
-router.delete('/:id', (res, req) => {
+router.delete('/:id', (req, res) => {
     User.destroy({
         where:{
             id: req.params.id
