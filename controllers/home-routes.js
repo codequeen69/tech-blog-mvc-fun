@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post, User, Comment } = require('../models');
 
-
+//get all posts
 router.get('/', (req, res) => {
     Post.findAll({
     attributes: ['id', 'title', 'post_content', 'created_at'],
@@ -33,6 +33,16 @@ router.get('/', (req, res) => {
         console.log(err);
         res.status(500).json(err);
     });
+});
+
+//render login page
+router.get('/login', (req, res) =>{
+    res.render('login');
+});
+
+//render signup page
+router.get('/signup', (req, res) => {
+    res.render('signup');
 });
 
 module.exports = router;

@@ -61,13 +61,48 @@ router.post('/', (req, res) => {
         username: req.body.username,
         password: req.body.password
     })
-        .then(dbUserData => res.json(dbUserData))
-            .catch(err =>{
-                console.log(err);
-                res.status(500).json(err);
-            });
-        
+    .then(dbUserData => {
+//res.session.save is a callback funtion we wanna make sure the session is created before
+//we send the response back
+       req.session.save(() => {
+          req.session.user_id = dbUserData.id;
+          req.session.username = dbUserData.username;
+          req.session.loggedIn = true;
+      
+          res.json(dbUserData);
+        });
+      }) 
 });
+
+//login route for users
+router.post('/login', (req, res) => {
+    User.findOne({
+      where: {
+        username: req.body.username
+      }
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(400).json({ message: 'No user with that username!' });
+        return;
+      }
+  
+      const validPassword = dbUserData.checkPassword(req.body.password);
+  
+      if (!validPassword) {
+        res.status(400).json({ message: 'Incorrect password!' });
+        return;
+      }
+  
+      req.session.save(() => {
+        // declare session variables
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+  
+        res.json({ user: dbUserData, message: 'You are now logged in!' });
+      });
+    });
+  });
 
 //PUT /api/users/idnumber to update
 router.put('/:id', (req, res) =>{
