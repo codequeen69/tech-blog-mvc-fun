@@ -1,8 +1,8 @@
 const path = require ('path');
 const express = require('express');
 //const session = require('express-session');
-//const exphbs = require('express-handlebars');
-//const hbs = exphbs.create({});
+const exphbs = require('express-handlebars');
+const hbs = exphbs.create({});
 
 //import the connection from sequelize
 const sequelize = require('./config/connection');
@@ -25,12 +25,9 @@ const PORT = process.env.PORT || 3001;
 
 //app.use(session(sess));
 
-//will import routes from index.js
-//const routes = require('./controllers');
-
 //for handlebars find out what these are doing!
-//app.engine('handlebars', hbs.engine);
-//app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 
 //middleware
@@ -40,8 +37,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 //turns on the routes
-//app.use(routes);
 app.use(require('./controllers'));
+
 //turns on connection to db, connects models to associated db tables, will create a table if none is found
 //if force is set to true it will drop and recreate db and tables;
 sequelize.sync({force: false}).then(()=>{
