@@ -1,5 +1,4 @@
 const router = require('express').Router();
-const res = require('express/lib/response');
 const { Post, User, Comment } = require('../../models');
 
 //get all posts
