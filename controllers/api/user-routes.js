@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 
 //GET /api/users
@@ -55,7 +56,7 @@ router.get('/:id', (req, res) => {
 
 
 //POST create a user /api/users
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
     console.log(req.body);
     User.create({
         username: req.body.username,
@@ -119,7 +120,7 @@ router.post('/logout', (req, res) =>{
 
 
 //PUT /api/users/idnumber to update
-router.put('/:id', (req, res) =>{
+router.put('/:id', withAuth, (req, res) =>{
     User.update(req.body, {
         individualHooks: true,
         where:{
@@ -139,7 +140,7 @@ router.put('/:id', (req, res) =>{
 });
 
 //DELETE api/users/idnumber
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     User.destroy({
         where:{
             id: req.params.id
