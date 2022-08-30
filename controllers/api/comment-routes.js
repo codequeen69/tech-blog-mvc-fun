@@ -15,20 +15,24 @@ router.get('/', (req, res) => {
 
 //create a comment
 router.post('/', (req, res) => {
+    //check session to make sure only logged in users can comment
+   if (req.session){
     Comment.create({
         comment_text: req.body.comment_text,
         post_id: req.body.post_id,
-        user_id: req.body.user_id
+        //use id from the session
+        user_id: req.session.user_id
     })
         .then(dbCommentData => res.json(dbCommentData))
         .catch(err => {
             console.log(err);
-            res.status(500).json(err);
+            res.status(400).json(err);
         });
+    }
 });
 
 //update a comment
-router.put('/:', (req, res) => {
+router.put('/:id', (req, res) => {
     Comment.update({
         where: {
             id: req.params.id
