@@ -1,30 +1,5 @@
-<article class="post">
-  <div class="title">
-    <a href="{{post.title}}" target="_blank">{{post.title}}</a>
-    <p>{{post.post_content}}</p>
-  </div>
-  <div class="meta">
-    by {{post.user.username}} on
-    {{post.created_at}}
-    |
-    <a href="/post/{{post.id}}">{{post.comments.length}} comment(s)</a>
-  </div>
-</article>
-
-
-<div class="comments">
-    {{#each post.comments}}
-    <section class="comment">
-    <div class="meta">
-      {{user.username}} on {{created_at}}
-    </div>
-    <div class="text">
-      {{comment_text}}
-    </div>
-  </section>
-  {{/each}}
-</div>
-
+{{>post-info post}}
+{{>comments post.comments}}
 
 {{#if loggedIn}}
 <form class="comment-form">
