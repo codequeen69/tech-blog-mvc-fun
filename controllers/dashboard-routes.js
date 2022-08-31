@@ -43,7 +43,7 @@ router.get('/', withAuth, (req, res) => {
       });
   });
 
-//add a post!!!!!!!!!!!!!
+//add a post!!!!!!!!!!!!! by creating a new route
 router.get('/new', (req, res) => {
   res.render('create-post');
 });
