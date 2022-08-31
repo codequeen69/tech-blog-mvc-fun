@@ -17,13 +17,13 @@
       </h1>
       
       <nav class="text-center p-3 ">
-        <a class="m-5" href="/">Home</a>
+        <a class="p-5" href="/">Home</a>
         <!--logout will not be a page people can visit like login so we just give it a button-->
         {{#if loggedIn}}
-        <a href="/dashboard">Dashboard</a>
-        <button id="logout" class="btn-no-style">Logout</button>
+        <a class="p-5" href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style text-primary">Logout</button>
         {{else}}
-        <a class="m-5" href="/login">Login</a>
+        <a class="p-5" href="/login">Login</a>
         {{/if}}
       </nav>
       

@@ -1,8 +1,57 @@
 body{
     background-color:palegoldenrod;
 }
-
+.form{
+    display:block;
+    text-align: center;
+    
+}
+form{
+    display:inline-block;
+    
+}
 ul{
     list-style: none;
+}
+.login{
+width:75%;
 
+}
+.signup{
+    width: 75%;
+}
+.create{
+    width: 75%;
+}
+input{
+    width: 75%;
+    padding: .5%;
+    border-radius: 5px;
+}
+textarea{
+    width: 75%; 
+    border-radius: 5px;
+    resize: none;
+}
+.btn-no-style{
+    background: none;
+    color: inherit;
+	border: none;
+	padding: 5;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+.post{
+    display:block;
+    align-items: center;
+}
+.post2{
+    display:block;
+}
+footer{
+    font-size: 20px;
+    padding:10px;
+    bottom:0;
+    width: 100%;
 }

@@ -1,29 +1,35 @@
-<article>
+<article class="form">
   <h2>
-    Edit Post
+    Edit Post...
   </h2>
   <form class="edit-post-form">
     <div>
-      <input name="post-title" type="text" value="{{post.title}}" />
-      <p>({{post.post_content}})</p>
+      <p>Title:</p>
+      <input name="title" type="text" value="{{post.title}}"/>
+      <p>Content:</p>
+      <input name="post_content" type="text" value="{{post.post_content}}"/>
     </div>
     <div>
       <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
     </div>
-    <button type="submit">Save post</button>
-    <button type="button" class="delete-post-btn">Delete post</button>
+    <div class="mb-3">
+    <button class="btn btn-primary" type="submit">Save post</button>
+    <button type="click" class="delete-post-btn btn btn-primary">Delete post</button>
+  </div>
   </form>
-  
 </article>
+
+<div class="form">
 <form class="comment-form">
-  <div>
+  <div class="mb-3">
     <textarea name="comment-body"></textarea>
   </div>
 
   <div>
-    <button type="submit">add comment</button>
+    <button class="btn btn-primary" type="submit">add comment</button>
   </div>
 </form>
+</div>
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

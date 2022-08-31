@@ -1,15 +1,16 @@
 {{#if posts.length}}
 <section>
-  <h2>Your Dashboard</h2>
-  <ol>
+  <h2 class="text-center text-success">Your Dashboard</h2>
+  <ul>
     {{#each posts as |post|}}
     <li>
       {{> post-info post}}
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>
     {{/each}}
-  </ol>
+  </ul>
 </section>
 {{/if}}
-
-<a href="/dashboard/new" class="post-link">Create post</a>
+<div class="text-center">
+<a href="/dashboard/new" class="post-link h4">+ Create post</a>
+</div>
