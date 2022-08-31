@@ -22,7 +22,7 @@ For this challege, I wanted to create a full-stack blog site for the tech commun
 ![Screen Shot 2022-08-31 at 4 13 04 PM](https://user-images.githubusercontent.com/104512547/187784613-196cdfce-c924-4959-8c92-b24e06b3bcc5.png)
 
 ## Website Link
-
+https://mighty-oasis-39054.herokuapp.com/
 
 ## Repository
 https://github.com/codequeen69/tech-blog-mvc-fun.git
